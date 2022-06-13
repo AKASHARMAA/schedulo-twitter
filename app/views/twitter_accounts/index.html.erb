@@ -1,0 +1,27 @@
+<div class="w3-center w3-container">
+    <h1 style="font-family:'Courier New', Courier, monospace">Your Linked Twitter Accounts :</h1>
+    <%= button_to "Link Another Account" ,"/auth/twitter", method: :post, class: "w3-button w3-blue w3-hover-red w3-round", data: {turbo: false} %>
+</div>
+
+<div class="w3-container">
+    <% Current.user.twitter_accounts.each do |this_account| %>
+        <div class="w3-panel w3-border-green w3-border-top w3-border-bottom w3-pale-green" style="display: flex; padding: 5px; ">
+            <div class="w3-center"  style="flex-grow: 1;">
+                <img src="<%= this_account.image %>" class="w3-circle w3-responsive" style="margin-left: 20px;" >
+            </div>
+            <div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; flex-grow: 2;" class="vertically-center">
+                <span>
+                    <b>Username : </b><%= this_account.username %>
+                </span>
+            </div>
+            <div style="flex-grow: 1; display: flex" >
+                <div style="flex-grow: 1">
+                    <%= button_to "Remove" ,"/twitter-accounts/#{this_account.id}", method: :delete, class: "w3-button w3-blue w3-hover-red w3-round", data: {turbo: false} %>
+                </div>
+                <div style="flex-grow: 1">
+                    <%= button_to "Post Tweet" ,"/tweet/post-tweet/#{this_account.id}", method: :get, class: "w3-button w3-blue w3-hover-red w3-round", data: {turbo: false} %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,24 @@
+<h1 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif" class="w3-center">All Tweets : </h1>
+<div class="w3-container">
+    <% Current.user.twitter_accounts.each do |twitter_account| %>
+        <% twitter_account.client.user_timeline(twitter_account[:username]).each do |tweet| %>
+        <div class="w3-panel w3-light-blue w3-border-blue w3-topbar w3-round w3-card" style="display: flex ; padding: 10px; border: 2px solid">
+            
+            <span class="vertically-center" style="margin-left: 20px">
+                <div style="display: flex">
+                    <div>
+                        <img src="<%= twitter_account.image %>" class="w3-circle" >
+                    </div>
+                    <div class="vertically-center" style="margin-left: 20px">
+                        <h3 style="font-family:Georgia, 'Times New Roman', Times, serif"><b><%= twitter_account.username %> :</b></h3>
+                    </div>
+                </div>
+                <span >
+                    <p style="font-family:Arial, Helvetica, sans-serif"><i><%= tweet.full_text %></i></p>
+                </span>
+                </span>
+            </div>
+
+        <% end %>
+    <% end %>
+</div>

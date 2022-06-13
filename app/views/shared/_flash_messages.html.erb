@@ -1,0 +1,11 @@
+<% if flash[:alert] %>
+<div class="w3-panel w3-pale-red w3-leftbar w3-border-red">
+    <p><i><%= flash[:alert] %></i></p>
+</div>
+<% end %>
+
+<% if flash[:notice] %>
+<div class="w3-panel w3-light-blue w3-leftbar w3-border-red">
+    <p><i><%= flash[:notice] %></i></p>
+</div>
+<% end %>

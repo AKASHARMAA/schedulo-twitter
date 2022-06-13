@@ -1,0 +1,29 @@
+<nav class="w3-bar w3-card w3-light-grey"  style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+
+    <a href="/"  class="w3-button w3-pink w3-hover-blue" style="padding: 20px;">
+        <b>Home</b>
+    </a>
+    <% if Current.user %>
+    <a href="/twitter-accounts"  class="w3-button" style="padding: 20px">
+        Manager Accounts
+    </a>
+    <a href="/tweets"  class="w3-button" style="padding: 20px">
+        Tweets
+    </a>
+    <% end %>
+
+    <% if !Current.user %>
+    <a href="/signup"  class="w3-button" style="padding: 20px; float: right;">
+        Register
+    </a>
+    <a href="/login"  class="w3-button" style="padding: 20px; float: right; ">
+        Login
+    </a>
+    <% end %>
+    
+    <% if Current.user %>
+    <a href="/logout"  class="w3-button" style="padding: 20px; float: right;">
+        LogOut
+    </a>
+    <% end %>
+</nav>

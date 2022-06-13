@@ -1,0 +1,30 @@
+<% if Current.user.twitter_accounts.any? %>
+<div class="w3-center w3-container">
+        <h1 style="font-family:'Courier New', Courier, monospace">Tweets :</h1>
+        <% Current.user.tweets.each do |thisTweet| %>
+        <div class="w3-panel w3-light-blue w3-border-blue w3-leftbar" >
+                <div style="display: flex; padding : 10px">
+                        <div style="flex-grow: 1;" >
+                                <img src="<%= thisTweet.twitter_account.image %>" class="w3-circle w3-responsive" >
+                        </div>
+                        <div style="flex-grow: 1" class="vertically-align" >
+                                <h2 ><%= thisTweet.twitter_account.username %></h2>
+                        </div>
+                        <div style="flex-grow: 10; float: right;">
+                                <%= button_to "delete" ,"tweets/delete/#{thisTweet.id}", method: :delete, class: "w3-button w3-blue w3-round" %>
+                        </div>
+                        <div style="flex-grow: 10" >
+                                <%= button_to "edit" ,"/tweets/edit/#{thisTweet.id}", method: :get, class: "w3-button w3-blue w3-round" %>
+                        </div>
+                </div>
+                <div style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+                        <%= thisTweet.body %>
+                </div>
+        </div>
+        <% end %>
+</div>
+<% end %>
+
+<% if !Current.user.twitter_accounts.any? %>
+    <%= button_to "Link Your Account" ,"/auth/twitter", method: :post, class: "w3-button w3-blue w3-hover-red w3-round", data: {turbo: false} %>
+<% end %>

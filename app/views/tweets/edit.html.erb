@@ -1,0 +1,32 @@
+<%= form_with model: @tweet, url: "/tweets/edit/#{@tweet.id}", method: :patch, data: {turbo: false} do |form| %>
+    <div class="w3-container ">
+        <div style="margin-top: 10px; text-align: center;">
+            <h3 style="text-align: center; font-family: 'Courier New', Courier, monospace;"><b>Post Body :</b></h3>
+            <div class="align-center">
+                <%= form.text_area :body , class: "w3-input w3-pale-red input-class w3-center w3-round" ,
+                    placeholder: "Enter Your Post..." %>
+            </div>
+                <% @tweet.errors.messages[:body].each do |errorMessage| %>
+                <div class="align-center w3-text-red">
+                    <b><%= errorMessage %></b>
+                </div>
+                <% end %>
+        </div>
+
+        <div style="margin-top: 10px; text-align: center;">
+            <h3 style="text-align: center; font-family: 'Courier New', Courier, monospace;"><b>Schedule at :</b></h3>
+            <div class="align-center">
+                <%= form.datetime_select :publish_at , class: "w3-input w3-pale-red input-class w3-center w3-round" %>
+            </div>
+                <% @tweet.errors.messages[:body].each do |errorMessage| %>
+                <div class="align-center w3-text-red">
+                    <b><%= errorMessage %></b>
+                </div>
+                <% end %>
+        </div>
+        <br>
+        <div class="align-center">
+            <input type="submit" form.submit class="w3-teal w3-round w3-center w3-border-black w3-padding-16" value="SCHEDULE" >
+        </div>
+    </div>
+    <% end %>

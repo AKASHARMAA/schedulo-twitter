@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TweetScheduler</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <style>
+      .input-class {
+        border: 1px solid black;
+        width: 300px;
+      }
+
+      .align-center {
+        display:flex;
+        justify-content: center
+      }
+
+      .vertically-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body class="w3-khaki">
+    <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/flash_messages" %>
+    <%= yield %>
+  </body>
+</html>

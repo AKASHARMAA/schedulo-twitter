@@ -1,0 +1,7 @@
+
+<div class="w3-container">
+<br>
+<% if Current.user %>
+<%= button_to "Connect Twitter" ,"/auth/twitter", method: :post, class: "w3-button w3-teal w3-round", data: {turbo: false} %>
+<% end %>
+</div>
